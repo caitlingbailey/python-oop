@@ -6,6 +6,7 @@ class Room():
         self.name = room_name
         self.description = None
         self.linked_rooms = {}
+        self.character = None
     
     def set_name(self, name):
         self.name = name
@@ -41,3 +42,9 @@ class Room():
         else:
             print("You can't go that way")
             return self
+
+    def set_character(self, character):
+        self.character = character
+    
+    def get_character(self):
+        return self.character

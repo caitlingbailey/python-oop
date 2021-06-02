@@ -1,6 +1,10 @@
+# Imports
 from room import Room
 from item import Item
+from character import Enemy
+from character import Character
 
+# Create rooms
 kitchen = Room("kitchen")
 kitchen.set_description("A dank and dirty room buzzing with flies")
 
@@ -15,12 +19,47 @@ dining_hall.link_room(kitchen, "north")
 dining_hall.link_room(ballroom, "west")
 ballroom.link_room(dining_hall, "east")
 
-current_room = kitchen
+# Create characters
+dave = Enemy("Dave", "A smelly zombie")
+dave.set_conversation("Braiiiiinnnnss!")
+dave.set_weakness("cheese")
 
-sword = Item("sword")
-print(sword.get_name())
-# while True:
-#     print("\n")
-#     current_room.get_details()
-#     command = input("Which way? ")
-#     current_room = current_room.move(command)
+evan = Enemy("Evan", "A ghost!")
+evan.set_conversation("Boo!")
+evan.set_weakness("sunlight")
+
+dining_hall.set_character(dave)
+ballroom.set_character(evan)
+
+
+# Set up game
+
+current_room = kitchen
+alive = True
+
+while alive:
+    print("\n")
+    current_room.get_details()
+    inhabitant = current_room.get_character()
+
+    if inhabitant:
+        inhabitant.describe()
+    
+
+    command = input("> ")
+    
+    if command in ["north", "east", "south", "west"]:
+        current_room = current_room.move(command)
+    elif command == "talk":
+        if inhabitant:
+            inhabitant.talk()
+
+    elif command == "fight":
+        if inhabitant and isinstance(inhabitant, Enemy):
+            outcome = inhabitant.fight(input("What will you fight with? "))
+            if not outcome:
+                print("Sorry, you died!\n")
+                alive = outcome
+            else:
+                print("You won the fight!")
+                current_room.set_character(None)
