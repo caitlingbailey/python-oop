@@ -1,6 +1,6 @@
 class Item():
     '''
-    Creates an item in game
+    Creates an item in game.
     '''
     def __init__(self, item_name):
         self.name = item_name

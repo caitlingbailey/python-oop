@@ -1,5 +1,7 @@
 class Character():
-    # Create a character
+    '''
+    Creates a character
+    '''
     def __init__(self, char_name, char_description):
         self.name = char_name
         self.description = char_description
@@ -27,6 +29,9 @@ class Character():
         return True
 
 class Enemy(Character):
+    '''
+    Extends the character class into an Enemy
+    '''
     enemies_to_defeat = 0
 
     def __init__(self, char_name, char_description):

@@ -1,6 +1,6 @@
 class Room():
     '''
-    This is a docstring
+    Creates the rooms in-game
     '''
 
     number_of_rooms = 0

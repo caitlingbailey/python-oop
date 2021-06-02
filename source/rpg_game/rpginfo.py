@@ -1,7 +1,7 @@
-from typing import SupportsAbs
-
-
 class RPGInfo():
+    '''
+    Information about the game and author
+    '''
     author = "Anonymous"
 
     def __init__(self, game_title):
