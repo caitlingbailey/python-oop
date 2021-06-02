@@ -12,8 +12,10 @@ class Item():
     def get_name(self):
         return self.name
     
-    def set_description(self, item_description):
+    def describe(self):
+        print(f"A {self.name} is here.")
+        print( self.description )
+    
+    def set_description(self, item_description) -> None:
         self.description = item_description
     
-    def get_description(self):
-        return self.description

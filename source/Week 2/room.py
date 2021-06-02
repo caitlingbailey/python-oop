@@ -2,11 +2,16 @@ class Room():
     '''
     This is a docstring
     '''
+
+    number_of_rooms = 0
+
     def __init__(self, room_name):
         self.name = room_name
         self.description = None
         self.linked_rooms = {}
         self.character = None
+        self.item = None
+        Room.number_of_rooms += 1
     
     def set_name(self, name):
         self.name = name
@@ -48,3 +53,9 @@ class Room():
     
     def get_character(self):
         return self.character
+
+    def set_item(self, item):
+        self.item = item
+    
+    def get_item(self):
+        return self.item
